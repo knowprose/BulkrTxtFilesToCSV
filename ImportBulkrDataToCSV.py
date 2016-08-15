@@ -12,27 +12,28 @@
 
 #You should have received a copy of the GNU General Public License
 
+#TODOs show where you should edit for your own local directory. 
+
+#Use: Requires you to have Python on your system (tested with 3.5). Drop this in the appropriate directory, change path accordingly (see TODOs). Run it. 
+
 import os
 import csv
-
-ftitle=0;
-fdesc=0;
-ftags=0;
 
 # Get the text file names in the directory. 
 dirTxtListing = os.listdir("D:/FlickrImages")
 metadataFiles = []
 for item in dirTxtListing:
 	if ".txt" in item: 
-		metadataFiles.append('D:/FlickrImages'+'/'+item)
+		metadataFiles.append('D:/FlickrImages'+'/'+item) #TODO Change this to the path where the txt files are (with the jpgs)
 #print (metadataFiles)
 
-with open('flickr.csv', 'w', newline='') as csvfile:
+#TODO change the csv filename if you wish, as well as it's path - you can move it where you want to. 
+with open('flickr.csv', 'w', newline='') as csvfile: 
 	photoinfowriter = csv.writer(csvfile, delimiter=',')
 	#First row to be warm and fuzzy.
 	row = ['Photographer','Photo URL','License','Taken Date','Upload Date','Views','Comments','Title','Description','Tags']
 	photoinfowriter.writerow(row)
-	#pull data from individual metadata Files and insert into database
+	#pull data from individual metadata Files and insert into csv file
 	for singleFile in metadataFiles:
 		a = open(singleFile,"r")
 		inLineCount = 0
