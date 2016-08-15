@@ -14,21 +14,20 @@
 
 #TODOs show where you should edit for your own local directory. 
 
-#Use: Requires you to have Python on your system (tested with 3.5). Drop this in the appropriate directory, change path accordingly (see TODOs). Run it. 
+# Use: Requires you to have Python on your system (tested with 3.5). Drop this in the appropriate directory, change path accordingly (see TODOs). Run it. 
 
 import os
 import csv
 
 # Get the text file names in the directory. 
 dirTxtListing = os.listdir("D:/FlickrImages")
+myPath = 'D:/FlickrImages' #TODO Change this to the path where the txt files are (with the jpgs)
+myCsvOutput = 'flickr.csv' #TODO Change this filename to one that you want. Or not. 
 metadataFiles = []
 for item in dirTxtListing:
 	if ".txt" in item: 
-		metadataFiles.append('D:/FlickrImages'+'/'+item) #TODO Change this to the path where the txt files are (with the jpgs)
-#print (metadataFiles)
-
-#TODO change the csv filename if you wish, as well as it's path - you can move it where you want to. 
-with open('flickr.csv', 'w', newline='') as csvfile: 
+		metadataFiles.append(myPath+'/'+item) 
+with open(myCsvOutput, 'w', newline='') as csvfile: 
 	photoinfowriter = csv.writer(csvfile, delimiter=',')
 	#First row to be warm and fuzzy.
 	row = ['Photographer','Photo URL','License','Taken Date','Upload Date','Views','Comments','Title','Description','Tags']
